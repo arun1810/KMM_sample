@@ -20,7 +20,7 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
+    ).forEach {//configuration for ios framework goes here.
         it.binaries.framework {
             baseName = "shared"
         }
@@ -59,7 +59,7 @@ kotlin {
     }
 }
 
-android {
+android {// configuration for android library goes here.
     namespace = "com.example.kmm_test_2"
     compileSdk = 33
     defaultConfig {
