@@ -28,6 +28,7 @@ class Greeting {
 
         return "Hello, ${platform.name}! From Custom Greeting" +
                 "\n\nThere are only ${daysUntilNewYear()} days left until New year🥳🎆" +
-                "\n\nThe last successful launch was ${lastSuccessLaunch.launchDateUTC}‍🚀"
+                "\n\nThe last successful launch was ${lastSuccessLaunch.launchDateUTC}‍🚀"+
+                "\n\n The UUID is:${getUUID()}"
     }
 }
