@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization") version "1.9.0"
     id("com.android.library")
+    id("com.squareup.sqldelight") //before i included the class path in project's build.gradle, declaring version 1.5.5 here worked.
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -27,6 +28,7 @@ kotlin {
     }
 
     val ktorVersion = "2.3.2"
+    val sqlDelightVersion = "1.5.5"
 
     sourceSets {
         val commonMain by getting {
@@ -38,6 +40,9 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion") //responsible for serializing/deserializing the content in a specific format
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion") //instructs ktor to use the JSON format and kotlinx.serialization as a serialization library
+
+                //SqlDelight
+                implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
             }
         }
         val commonTest by getting {
@@ -49,11 +54,15 @@ kotlin {
         val androidMain by getting{
             dependencies{
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+                //sqlDelight
+                implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
         }
         val iosMain by getting{
             dependencies{
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+                //sqlDelight
+                implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
             }
         }
     }
@@ -64,5 +73,11 @@ android {// configuration for android library goes here.
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+    }
+}
+
+sqldelight{
+    database("AppDatabase"){
+        packageName = "com.jetbrains.handson.kmm.shared.cache"
     }
 }

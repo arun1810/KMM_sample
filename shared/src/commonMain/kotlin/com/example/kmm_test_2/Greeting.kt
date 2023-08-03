@@ -1,6 +1,6 @@
 package com.example.kmm_test_2
 
-import RocketLaunch
+import com.example.kmm_test_2.entity.RocketLaunch
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
