@@ -15,7 +15,7 @@ data class RocketLaunch(
     @SerialName("date_utc")
     val launchDateUTC:String,
     @SerialName("details")
-    val details:String,
+    val details:String?,
     @SerialName("success")
     val launchSuccess:Boolean?,
     @SerialName("links")
@@ -29,7 +29,7 @@ data class Links(
     @SerialName("patch")
     val patch:Patch,
     @SerialName("article")
-    val article:String
+    val article:String?
 )
 
 @Serializable

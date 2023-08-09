@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
                         catch(e:Exception){
                             e.localizedMessage ?: "error"
                         }
+                        println(SpaceXSDKAndroid(this@MainActivity).getAllLaunches(true))
                     }
                     GreetingView(text)
                 }
